@@ -53,7 +53,7 @@ merged$Activity = factor(merged$Activity, levels = c(1,2,3,4,5,6), labels = c("W
 
 ## Part 4: Appropriately labels the data set with descriptive variable names.
 
-descfeatures -> names(merged)
+descfeatures <- names(merged)
 descfeatures = gsub("-mean", " Mean ", descfeatures)
 descfeatures = gsub("-std", " STD ", descfeatures)
 descfeatures = gsub('[-()]',"", descfeatures)
@@ -66,6 +66,7 @@ tidytable = arrange(merged, Subject, Activity)
 tidytable = group_by(merged, Subject, Activity)
 tidytable = tidytable %>% summarise_all(funs(mean))
 
+write.table(tidytable, file = 'tidydata.txt', row.name=FALSE)
 
 
 
