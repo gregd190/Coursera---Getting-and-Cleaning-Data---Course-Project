@@ -7,7 +7,7 @@ features = read.table('UCI_HAR_Dataset/features.txt')
 #Remove Feature Numbers
 features = features[2]
 
-# Find indexes of the features that contain either "mean" or "std"
+# Find indexes of the features that contain either "mean" or "std" and select these 
 meanindexlist<- grep("mean", tolower(features[,1]))
 stdindexlist<- grep("std", tolower(features[,1]))
 indexlist <- sort(c(meanindexlist,stdindexlist))
@@ -45,7 +45,7 @@ merged = rbind(testdf, traindf)
 
 ## Part 3:Uses descriptive activity names to name the activities in the data 
 
-#Rename the Y1 row to "Activity", and the S1 row to "Subject"
+#Rename the Y1 column to "Activity", and the S1 column to "Subject"
 setnames(merged, "Y1","Activity")
 setnames(merged, "S1","Subject")
 
